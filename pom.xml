@@ -5,23 +5,31 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.hexagonoframework</groupId>
+        <groupId>com.github.hexagonoframework</groupId>
         <artifactId>hexagono-parent</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>0.0.2</version>
     </parent>
 
     <artifactId>hexagono-ws-soap-client</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.hexagonoframework</groupId>
-            <artifactId>hexagono-bom-test</artifactId>
-            <type>pom</type>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.github.hexagonoframework</groupId>
+                <artifactId>hexagono-bom-test</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 
 </project>

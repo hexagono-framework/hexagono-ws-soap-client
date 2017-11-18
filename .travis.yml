@@ -1,1 +1,21 @@
 language: java
+
+jdk:
+  - oraclejdk8
+
+install: true
+
+script: true
+
+before_deploy:
+  - openssl aes-256-cbc -pass pass:$ENCRYPTION_PASSWORD -in .travis-ci/pubring.gpg.enc -out .travis-ci/pubring.gpg -d
+  - openssl aes-256-cbc -pass pass:$ENCRYPTION_PASSWORD -in .travis-ci/secring.gpg.enc -out .travis-ci/secring.gpg -d
+
+deploy:
+  provider: script
+  script: mvn clean deploy --settings .travis-ci/settings.xml -P release -B -V
+  skip_cleanup: true
+  on:
+    repo: hexagonoframework/hexagono-ws-soap-client
+    branch: master
+    jdk: oraclejdk8
